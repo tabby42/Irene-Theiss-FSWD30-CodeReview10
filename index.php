@@ -6,7 +6,14 @@
   </h1>
 </header><!-- /header -->
 <div>
-	<?php Media::getAllMedia();?>
+	<?php $media = Media::getAllMedia(); 
+			//var_dump($media);?>
 </div>
+<div class="container-fluid">
+  <div class="row dark-bg pad-row-lr media-container">
+  	<!-- Media Items here-->
+  	<?php Media::displayMedia($media);?>
+  </div>
+</div><!-- /.container-fluid -->
 
 <?php include "partials/footer.php";?>
