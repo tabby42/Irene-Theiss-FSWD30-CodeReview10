@@ -1,0 +1,266 @@
+
+/*font-related stuff*/
+$alfa: 'Alfa Slab One', cursive;
+$robotoSlab: 'Roboto Slab', sans-serif;
+$base-font-size: 14px;
+$letter-spacing-default: 1px;
+.italic {
+	font-style: italic;
+}
+
+h1, h2, h3, h4{
+	font-family: $alfa;
+}
+
+/*Colors*/
+$dark: #1C1F23;
+$white: #fff;
+$beige: #83715C;
+$error: #C73835;
+$success: #38C13B;
+
+$transition-default: all 0.5s ease;
+
+/*Layout Elements*/
+body {
+	font-family: $robotoSlab;
+	font-weight: 400;
+	font-size: $base-font-size;
+}
+
+.navbar {
+	border-radius: 0;
+	&.navbar-default {
+		background-color: transparent;
+		border: 0;
+	}
+	.navbar-brand {
+		color: $white;
+		outline: 0;
+		font-size: ($base-font-size - 2);
+    	border-radius: 0;
+    	background-color: $beige;
+	    padding: 7px 15px 9px;
+	    text-transform: uppercase;
+	    -webkit-transition: $transition-default;
+	    transition: $transition-default;
+		.add-item {
+			display: inline-block;
+			margin-left: 10px;
+		}
+		&:hover, &:focus {
+			background-color: darken($beige, 20%);
+			color: $white;
+		}
+	}
+	.glyphicon.glyphicon-plus {
+		color: $dark;
+		background-color: $white;
+		border-radius: 100%;
+		padding: 10px;
+	}
+}
+
+header {
+	min-height: 100vh;
+	background-image: url("../img/Books_for_Wanderers_Featured.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-filter: grayscale(60%);
+	        filter: grayscale(60%);
+	h1 {
+		color: $white;
+		font-size: ($base-font-size * 4);
+		letter-spacing: $letter-spacing-default;
+	    position: absolute;
+	    width: 100%;
+	    padding: 0 20px;
+	    top: 50%;
+	    -webkit-transform: translateY(-50%);
+	            transform: translateY(-50%);
+		span {
+			display: block;
+			text-transform: none;
+			font-size: ($base-font-size * 2);
+			padding: 10px;
+			small {
+				color: $white;
+			}
+		}
+		@media (max-width: 500px) {
+			font-size: ($base-font-size * 2.5);
+		}
+	}
+}
+
+.media-container {
+	.media-item {
+		.media {
+			    padding: 10px;
+			    min-height: 500px;
+			    margin-bottom: 30px;
+			    border: 4px solid #fff;
+			img {
+				max-width: 100px;
+				-webkit-filter: grayscale(60%);
+				        filter: grayscale(60%);
+	            display: inline-block;
+			    margin: 0 auto;
+			    position: relative;
+			    left: 50%;
+			    -webkit-transform: translateX(-50%);
+			            transform: translateX(-50%);
+	            border-radius: 0;
+	            border-color: $white;
+			}
+			.media-body {
+				color: $white;
+				width: 100%;
+				display: block;
+			}
+			.media-center {
+				position: relative;
+			    padding: 40px 0;
+			}
+            .media-heading {
+            	font-size: ($base-font-size * 2);
+            	letter-spacing: $letter-spacing-default;
+        	    word-wrap: break-word;
+            }
+            h6 {
+        	    font-size: $base-font-size;
+    			line-height: 1.2;
+    			padding-bottom: 10px;
+            }
+            .label {
+            	font-size: ($base-font-size - 2);
+            	border-radius: 0;
+            	display: inline-block;
+            	margin: 0 3px;
+            	background-color: darken($beige, 20%);
+        	    padding: 7px 15px 9px;
+        	    text-transform: uppercase;
+        	    &.label-info {
+        	    	background-color: $beige;
+        	    }
+            }
+			.glyphicon {
+				font-size: 20px;
+    			padding: 3px;
+    			color: $beige;
+			}
+			.rating {
+				padding: 15px 0;
+			}
+		}
+	}
+}
+
+#modal-form {
+	background: rgba(28, 31, 35, 0.84);
+	.modal-content {
+		border-radius: 0;
+		border: 4px solid $white;
+		background-color: $dark;
+		color: $white;
+	    padding: 20px 35px;
+		.modal-title {
+			letter-spacing: $letter-spacing-default;
+		    text-align: center;
+    		font-size: 24px;
+		}
+		.modal-header,
+		.modal-footer {
+			border-width: 0;
+			.close {
+				color: $white;
+				text-shadow: none;
+				opacity: 1;
+			}
+		}
+		.modal-footer {
+			padding: 30px 0 15px 0;
+		}
+		.btn {
+			border-radius: 0;
+			border:0;
+			width: 48%;
+			text-transform: uppercase;
+			font-size: $base-font-size;
+			padding: 10px 30px;
+			color: $white;
+			-webkit-transition: $transition-default;
+			transition: $transition-default;
+			outline: 0;
+			-webkit-box-shadow: none;
+			        box-shadow: none;
+			&.btn-primary {
+				background-color: $beige;
+				&:hover, &:focus {
+					background-color: darken($beige, 20%);
+				}
+			}
+			&.btn-default {
+				background-color: darken($beige, 20%);
+				&:hover, &:focus {
+					background-color: $beige;
+				}
+			}
+			&.btn-sm {
+				width: 100%;
+				clear: both;
+			    margin-left: 0;
+			    margin-top: 25px;
+			}
+		}
+	}
+	.form-control, select {
+		border-radius: 0;
+		-webkit-box-shadow: none;
+		        box-shadow: none;
+        background-color: transparent;
+        color: $white;
+        border-color: $beige;
+	}
+	.has-error {
+		.form-control, .form-control-feedback {
+		    border-color: $error;
+		}
+	}
+	.has-success {
+		.form-control, .form-control-feedback  {
+			border-color: $success;
+		}
+	}
+	select {
+		-webkit-appearance: none;
+	}
+	label {
+		font-weight: 400;
+    	text-transform: uppercase;
+	}
+	.bg-danger {
+		padding: 5px;
+		background-color: transparent;
+		border: 1px solid $error;
+	}
+	
+}
+
+/*helper classes*/
+.dark-bg {
+	background-color: $dark;
+	color: $white;
+}
+
+.pad-row {
+	padding: 100px 0px;
+}
+
+.pad-row-lr {
+	padding: 100px 50px;
+}
+
+
+
