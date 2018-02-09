@@ -11,21 +11,20 @@
       <a class="navbar-brand" href="index.php">
         <span>Library</span>
       </a>
-      <a class="navbar-brand" href="account.php">
-        <span>
-        <?php if (isset($_SESSION['username'])) {
-          echo $_SESSION['username'];
-        }
-        ?>
-      </span>
-      </a>
+      <?php if (isset($_SESSION['username'])): ?>
+         <a class="navbar-brand" href="#">
+          <span>
+          <?php echo $_SESSION['username']; ?>
+        </span>
+        </a>
+      <?php endif ?>
       <?php if (isset($_SESSION['username'])) : ?>
         <a class="navbar-brand" href="logout.php">
           <span>Logout</span>
         </a>
       <?php endif ?>
       <?php if (!isset($_SESSION['username'])) : ?>
-        <a class="navbar-brand" href="login-form.php">
+        <a class="navbar-brand" href="#" data-toggle="modal" data-target="#login-modal">
           <span>Login</span>
         </a>
       <?php endif ?>
