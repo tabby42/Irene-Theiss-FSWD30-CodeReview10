@@ -30,17 +30,18 @@ body {
 
 .navbar {
 	border-radius: 0;
+	margin-bottom: 0;
 	&.navbar-default {
-		background-color: transparent;
+		background-color: $beige;
 		border: 0;
 	}
 	.navbar-brand {
+		margin-left: 0 !important;
 		color: $white;
 		outline: 0;
 		font-size: ($base-font-size - 2);
     	border-radius: 0;
     	background-color: $beige;
-	    padding: 7px 15px 9px;
 	    text-transform: uppercase;
 	    -webkit-transition: $transition-default;
 	    transition: $transition-default;
@@ -157,8 +158,10 @@ header {
 	}
 }
 
-#modal-form {
+#login-modal, #register-modal {
 	background: rgba(28, 31, 35, 0.84);
+    overflow-x: hidden;
+    overflow-y: auto;
 	.modal-content {
 		border-radius: 0;
 		border: 4px solid $white;
