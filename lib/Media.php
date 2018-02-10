@@ -17,7 +17,7 @@ class Media {
 	function __construct() {
         
     }
-
+    //constructor overload
 	static function constructWithParam($id, $title, $imageUrl, $isbn, $shortDesc,
 		$publishDate, $mediatype, $author, $genre, $publisher, $isReserved) {
 		$instance = new self();
@@ -54,6 +54,8 @@ class Media {
 				        array_push($medialist, Media::constructWithParam($retid, $rettitle, $retimageUrl, $retisbn, $retshortDesc,
                     	$retpublishDate, $retmediatype, $retauthor, $retgenre, $retpublisher, $retReserved) );
 				    }
+				    $stmt->close();
+				    $connection->close();
             	}
         	} 
     	}
@@ -96,6 +98,52 @@ class Media {
 	function getMediaById () {
 		$connection = openConnection();
 		$sql = "SELECT * FROM getMedia WHERE id = ?";
+		if($stmt = $connection->prepare($sql)){
+            // Bind variables to the prepared statement as parameters
+            $stmt->bind_param("s", $param_id);
+            // Set parameters
+            $param_id = $this->mediaId;
+            // Attempt to execute the prepared statement
+            if($stmt->execute()){
+                // store result
+                $stmt->store_result();
+                if($stmt->num_rows == 1){
+                	$stmt->bind_result($retid, $rettitle, $retimageUrl, $retisbn, $retshortDesc,
+                    	$retpublishDate, $retmediatype, $retauthor, $retgenre, $retpublisher, $retReserved);
+                	while ($stmt->fetch()) {
+				        //printf ("%s \n", $rettitle);
+				        $this->title = $rettitle;
+				        $this->imageUrl = $retimageUrl;
+				        $this->isbn = $retisbn;
+				        $this->shortDesc = $retshortDesc;
+				        $this->publishDate = $retpublishDate;
+				        $this->mediatype = $retmediatype;
+				        $this->author = $retauthor;
+				        $this->genre = $retgenre;
+				        $this->publisher = $retpublisher;
+				        $this->isReserved = $retReserved;
+				    }
+                    $stmt->close();
+                } else{
+                	$stmt->close();
+        			$connection->close();
+                	return false;
+                }
+            } else{
+            	$stmt->close();
+                echo "Something went wrong. Please try again later.";
+            }
+        }
+        $connection->close();
+        return $this;
+	}
+
+	function displayMediaDetails() {
+		ob_start();
+
+		$content = ob_get_contents();
+		ob_get_clean();
+		echo $content;
 	}
 
 }
