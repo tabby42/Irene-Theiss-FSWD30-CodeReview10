@@ -9,31 +9,28 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index.php">
-        <span>Library</span>
+        <span>Big <i class="fa fa-book"></i> Library</span>
       </a>
-      <?php if (isset($_SESSION['username'])): ?>
-         <a class="navbar-brand" href="#">
-          <span>
-          <?php echo $_SESSION['username']; ?>
-        </span>
-        </a>
-      <?php endif ?>
-      <?php if (isset($_SESSION['username'])) : ?>
-        <a class="navbar-brand" href="logout.php">
-          <span>Logout</span>
-        </a>
-      <?php endif ?>
-      <?php if (!isset($_SESSION['username'])) : ?>
-        <a class="navbar-brand" href="#" data-toggle="modal" data-target="#login-modal">
-          <span>Login</span>
-        </a>
-      <?php endif ?>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <!-- <li><a href="registration_form.php">Register</a></li>
-        <li><a href="login-form.php">Login</a></li> -->
+        <li>
+          <?php if (isset($_SESSION['username'])): ?>
+             <a class="" href="#">
+              <span>
+              <?php echo $_SESSION['username']; ?>
+            </span>
+            </a>
+          <?php endif ?>
+        </li>
+        <li>
+          <?php if (isset($_SESSION['username'])) : ?>
+            <a class="" href="lib/logout.php">
+              <span>Logout</span>
+            </a>
+          <?php endif ?>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

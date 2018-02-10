@@ -1,4 +1,4 @@
-<?php //session_start();?>
+<?php session_start();?>
 <?php require_once "lib/dbconfig.php";?>
 <!DOCTYPE html>
 <html>
