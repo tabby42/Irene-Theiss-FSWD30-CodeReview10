@@ -5,29 +5,33 @@ class Media {
 	public $title;
 	public $imageUrl;
 	public $isbn;
+	public $shortDesc;
 	public $publishDate;
 	public $mediaType;
 	public $author;
 	public $genre;
 	public $publisher;
+	public $isReserved;
 
 	//constructor
 	function __construct() {
         
     }
 
-	static function constructWithParam($id, $title, $imageUrl, $isbn, 
-		$publishDate, $mediatype, $author, $genre, $publisher) {
+	static function constructWithParam($id, $title, $imageUrl, $isbn, $shortDesc,
+		$publishDate, $mediatype, $author, $genre, $publisher, $isReserved) {
 		$instance = new self();
 		$instance->mediaId = $id;
 		$instance->title = $title;
 		$instance->imageUrl = $imageUrl;
 		$instance->isbn = $isbn;
+		$instance->shortDesc= $shortDesc;
 		$instance->publishDate = $publishDate;
 		$instance->mediatype = $mediatype;
 		$instance->author = $author;
 		$instance->genre = $genre;
 		$instance->publisher = $publisher;
+		$instance->isReserved = $isReserved;
         return $instance;
 	}
 
@@ -43,17 +47,16 @@ class Media {
                 $stmt->store_result();
                 if($stmt->num_rows > 0){ 
                 	// Bind result variables
-                    $stmt->bind_result($retid, $rettitle, $retimageUrl, $retisbn,
-                    	$retpublishDate, $retmediatype, $retauthor, $retgenre, $retpublisher);
+                    $stmt->bind_result($retid, $rettitle, $retimageUrl, $retisbn, $retshortDesc,
+                    	$retpublishDate, $retmediatype, $retauthor, $retgenre, $retpublisher, $retReserved);
                 	 while ($stmt->fetch()) {
 				        //printf ("%s \n", $retid);
-				        array_push($medialist, Media::constructWithParam($retid, $rettitle, $retimageUrl, $retisbn,
-                    	$retpublishDate, $retmediatype, $retauthor, $retgenre, $retpublisher) );
+				        array_push($medialist, Media::constructWithParam($retid, $rettitle, $retimageUrl, $retisbn, $retshortDesc,
+                    	$retpublishDate, $retmediatype, $retauthor, $retgenre, $retpublisher, $retReserved) );
 				    }
             	}
         	} 
     	}
-
     	return $medialist;
 	}
 
@@ -77,6 +80,10 @@ class Media {
 				     </h6>
 				    <span class="label label-primary"><?php echo $item->mediatype; ?></span>
 				    <span class="label label-info"><?php echo $item->genre; ?></span>
+				    <form action="show-details.php" method="get" accept-charset="utf-8">
+				    	<input type="hidden" name="mediaId" value="<?php echo $item->mediaId; ?>">
+            			<button type="submit" class="btn btn-primary btn-sm">Show details</button>
+				    </form>
 				</div>
 				</div>
     		</div>
@@ -84,6 +91,11 @@ class Media {
 		$content = ob_get_contents();
 		ob_get_clean();
 		echo $content;
+	}
+
+	function getMediaById () {
+		$connection = openConnection();
+		$sql = "SELECT * FROM getMedia WHERE id = ?";
 	}
 
 }

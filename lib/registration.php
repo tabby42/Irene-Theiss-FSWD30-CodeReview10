@@ -2,20 +2,22 @@
 	include "User.php";
 	// Define variables and initialize with empty values
 	$confirm_password = "";
-	$username_err = $email_err = $password_err = $confirm_password_err = "";
+	$firstname_err = $lastname_err = $email_err = $password_err = $confirm_password_err = "";
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		//create new user object
-		$newUser = User::fakeConstruct(trim($_POST["username"]), trim($_POST["email"]), trim($_POST["pwd"]));
-		//validate username
-		if(empty($newUser->username)){
-	        $username_err = "Please enter a username.";
+		$newUser = User::fakeConstruct(trim($_POST["firstname"]), trim($_POST["lastname"]),trim($_POST["email"]), trim($_POST["pwd"]));
+		//validate firstname
+		if(empty($newUser->firstname)){
+	        $firstname_err = "Please enter your first name.";
 	    } else {
-	    	if (!$newUser->checkUsername()) {
-	    		$username_err = "Username is already taken.";
-	    	} else {
-	    		$username_err = "";
-	    	}
+	    	$firstname_err = "";
+	    }
+		//validate lastname
+	    if(empty($newUser->lastname)){
+	        $lastname_err = "Please enter your last name.";
+	    } else {
+	    	$lastname_err = "";
 	    }
 	    //validate email
 	   	if(empty($newUser->email)){
@@ -23,6 +25,8 @@
 	    } else {
 	    	if (!$newUser->checkEmail()) {
 	    		$email_err = "Please enter a valid e-mail address.";
+	    	} else if (!$newUser->checkEmailExists()) {
+	    		$email_err = "This e-mail address is already in use.";
 	    	} else {
 	    		$email_err = "";
 	    	}
@@ -49,10 +53,8 @@
 	    	}
 	    }
 	    //check error messages before inserting to database
-	    if ($username_err === "" && $email_err === "" && $password_err === "" && $confirm_password_err === "") {
+	    if ($firstname_err === "" && $lastname_err === "" && $email_err === "" && $password_err === "" && $confirm_password_err === "") {
 	    	$newUser->createNewUser();
-	    } else {
-
-	    }
+	    } 
 	}
 ?>
