@@ -35,7 +35,7 @@ class Media {
         return $instance;
 	}
 
-	static function getAllMedia() {
+	static function getAllMedia($filter = null) {
 		$medialist = array();
 		$connection = openConnection();
 		$sql = "SELECT * FROM getMedia";
