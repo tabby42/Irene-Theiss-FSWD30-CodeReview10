@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Erstellungszeit: 10. Feb 2018 um 16:04
+-- Erstellungszeit: 10. Feb 2018 um 16:28
 -- Server-Version: 10.1.30-MariaDB
 -- PHP-Version: 7.2.1
 
@@ -144,6 +144,20 @@ CREATE TABLE `getmedia` (
 -- --------------------------------------------------------
 
 --
+-- Stellvertreter-Struktur des Views `getrentedmedia`
+-- (Siehe unten für die tatsächliche Ansicht)
+--
+CREATE TABLE `getrentedmedia` (
+`id` int(10) unsigned
+,`title` varchar(255)
+,`CONCAT(author.firstname, ' ', author.lastname)` varchar(111)
+,`DATE_FORMAT(rental_date, '%d.%m.%Y')` varchar(10)
+,`return_date` varchar(10)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `media`
 --
 
@@ -254,6 +268,15 @@ INSERT INTO `user_media` (`id`, `fk_user_id`, `fk_media_id`, `rental_date`) VALU
 DROP TABLE IF EXISTS `getmedia`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `getmedia`  AS  select `media`.`id` AS `id`,`media`.`title` AS `title`,`media`.`image_url` AS `image_url`,`media`.`isbn` AS `isbn`,`media`.`short_description` AS `short_description`,date_format(`media`.`publish_date`,'%d.%m.%Y') AS `DATE_FORMAT(publish_date, '%d.%m.%Y')`,`media`.`mediatype` AS `mediatype`,concat(`author`.`firstname`,' ',`author`.`lastname`) AS `CONCAT(author.firstname, ' ', author.lastname)`,`genre`.`genre_name` AS `genre_name`,`publisher`.`pub_name` AS `pub_name`,`media`.`reserved` AS `reserved` from (((`media` join `author` on((`media`.`fk_author_id` = `author`.`id`))) join `genre` on((`media`.`fk_genre_id` = `genre`.`id`))) join `publisher` on((`media`.`fk_publisher_id` = `publisher`.`id`))) order by `media`.`title` ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur des Views `getrentedmedia`
+--
+DROP TABLE IF EXISTS `getrentedmedia`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `getrentedmedia`  AS  select `user`.`id` AS `id`,`media`.`title` AS `title`,concat(`author`.`firstname`,' ',`author`.`lastname`) AS `CONCAT(author.firstname, ' ', author.lastname)`,date_format(`user_media`.`rental_date`,'%d.%m.%Y') AS `DATE_FORMAT(rental_date, '%d.%m.%Y')`,date_format((`user_media`.`rental_date` + interval 2 week),'%d.%m.%Y') AS `return_date` from (((`user` join `user_media` on((`user`.`id` = `user_media`.`fk_user_id`))) join `media` on((`user_media`.`fk_media_id` = `media`.`id`))) join `author` on((`media`.`fk_author_id` = `author`.`id`))) order by `media`.`title` ;
 
 --
 -- Indizes der exportierten Tabellen
