@@ -8,10 +8,8 @@
   </h1>
 </header> -->
 <!-- /header -->
-<div>
-	<?php $media = Media::getAllMedia(); 
+<?php $media = Media::getAllMedia(); 
 			//var_dump($media);?>
-</div>
 <div class="container-fluid">
   <div class="row dark-bg pad-row-lr media-container">
   	<!-- Media Items here-->
