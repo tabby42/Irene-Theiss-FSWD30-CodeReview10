@@ -75,11 +75,6 @@ class Media {
 				  <div class="media-body text-center">
 				  	<h4 class="media-heading text-uppercase"><?php echo $item->title; ?></h4>
 				    <h6>by <span class="italic"><?php echo $item->author; ?></span> | published by <span class="italic"><?php echo $item->publisher; ?><span></h6>
-				    <h6>published on <span class="italic"><?php echo $item->publishDate; ?></span> <br>
-				    	<?php if (!empty($item->isbn)): ?>
-				     		ISBN <span class="italic"><?php echo $item->isbn; ?><span>
-				    	<?php endif ?>
-				     </h6>
 				    <span class="label label-primary"><?php echo $item->mediatype; ?></span>
 				    <span class="label label-info"><?php echo $item->genre; ?></span>
 				    <form action="show-details.php" method="get" accept-charset="utf-8">
@@ -139,8 +134,35 @@ class Media {
 	}
 
 	function displayMediaDetails() {
-		ob_start();
-
+		ob_start(); ?>
+		<div class="col-lg-8 col-md-8 col-sm-12 media-item item-detail">
+    		<div class="media">
+			  <div class="media-body text-center">
+		  		<div class="media-center">
+			      <img class="media-object thumbnail" src="<?php echo $this->imageUrl; ?>" alt="Media Thumbnail">
+			  	</div>
+		  		<h4 class="media-heading text-uppercase"><?php echo $this->title; ?></h4>
+			    <h6>by <span class="italic"><?php echo $this->author; ?></span> | published by <span class="italic"><?php echo $this->publisher; ?><span></h6>
+		  		<span class="label label-primary"><?php echo $this->mediatype; ?></span>
+			    <span class="label label-info"><?php echo $this->genre; ?></span>
+			    <?php if ($this->isReserved === "true"): ?>
+					<span class="label label-primary">reserved</span>
+				<?php endif ?>
+				<?php if ($this->isReserved === "false"): ?>
+					<span class="label label-primary">available</span>
+				<?php endif ?>
+		  		<h6>published on <span class="italic"><?php echo $this->publishDate; ?></span> <br>
+			    	<?php if (!empty($this->isbn)): ?>
+			     		ISBN <span class="italic"><?php echo $this->isbn; ?><span>
+			    	<?php endif ?>
+			     </h6>
+			    <h6 class="media-heading text-uppercase alfa">Description</h6>
+			    <p class="desc"><?php echo $this->shortDesc; ?></p>
+				
+			  </div>
+		  </div>
+		</div>
+		<?php 
 		$content = ob_get_contents();
 		ob_get_clean();
 		echo $content;
