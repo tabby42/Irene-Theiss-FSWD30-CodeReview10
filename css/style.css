@@ -21,8 +21,8 @@ body {
   border-radius: 0;
   margin-bottom: 0; }
   .navbar.navbar-default {
-    background-color: #83715C;
-    border: 0; }
+    background-color: #1C1F23;
+    border-bottom: 4px solid #fff; }
   .navbar .navbar-brand {
     margin-left: 0 !important;
     color: #fff;
@@ -31,7 +31,7 @@ body {
     font-size: 18px;
     letter-spacing: 1px;
     border-radius: 0;
-    background-color: #83715C;
+    background-color: transparent;
     text-transform: uppercase;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease; }
@@ -39,7 +39,7 @@ body {
       display: inline-block;
       margin-left: 10px; }
     .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
-      background-color: #473d32;
+      /*background-color: darken($beige, 20%);*/
       color: #fff; }
   .navbar .glyphicon.glyphicon-plus {
     color: #1C1F23;
@@ -259,7 +259,8 @@ p.desc {
   background-color: transparent; }
 
 footer {
-  min-height: 50px; }
+  min-height: 50px;
+  border-top: 4px solid #fff; }
 
 /*helper classes*/
 .dark-bg {
