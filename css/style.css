@@ -259,8 +259,7 @@ p.desc {
   background-color: transparent; }
 
 footer {
-  min-height: 50px;
-  border-top: 4px solid #fff; }
+  min-height: 50px; }
 
 /*helper classes*/
 .dark-bg {
