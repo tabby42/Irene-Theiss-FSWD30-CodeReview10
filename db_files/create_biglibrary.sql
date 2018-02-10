@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS media (
 	fk_publisher_id  INT unsigned NOT NULL,
     mediatype ENUM('Book', 'DVD', 'CD') NOT NULL,
     fk_genre_id INT unsigned NOT NULL,
+    reserved ENUM('true', 'false') NOT NULL DEFAULT 'false',
     CONSTRAINT pk_media PRIMARY KEY(id)
 );
 
@@ -102,5 +103,28 @@ FOREIGN KEY (fk_user_id) REFERENCES user (id);
 ALTER TABLE user_media 
 ADD CONSTRAINT fk_user_media__media
 FOREIGN KEY (fk_media_id) REFERENCES media (id);
+
+-- create views
+CREATE VIEW getMedia AS
+SELECT media.id, title, image_url, isbn, short_description, DATE_FORMAT(publish_date, '%d.%m.%Y'), mediatype, 
+				CONCAT(author.firstname, ' ', author.lastname), genre_name, pub_name, reserved
+FROM media 
+JOIN author ON media.fk_author_id = author.id
+JOIn genre ON media.fk_genre_id = genre.id
+JOIN publisher ON media.fk_publisher_id = publisher.id
+ORDER BY title;
+
+-- SELECT * FROM getMedia WHERE id = 1;
+
+CREATE VIEW getRentedMedia AS
+SELECT user.id, title, CONCAT(author.firstname, ' ', author.lastname), DATE_FORMAT(rental_date, '%d.%m.%Y'), 
+				DATE_FORMAT(DATE_ADD(rental_date ,INTERVAL 2 WEEK), '%d.%m.%Y') AS return_date
+FROM user 
+JOIN user_media ON user.id = user_media.fk_user_id
+JOIN media ON user_media.fk_media_id = media.id
+JOIN author ON media.fk_author_id = author.id
+ORDER BY title;
+
+-- SELECT * FROM getRentedMedia WHERE id= 1;
 
 
