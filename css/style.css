@@ -48,6 +48,8 @@ body {
     padding: 10px; }
   .navbar .navbar-nav > li > a {
     color: #fff; }
+    .navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
+      color: #e6e6e6; }
 
 header {
   min-height: 100vh;

@@ -70,6 +70,9 @@ body {
 	}
 	.navbar-nav>li>a {
 		color: $white;
+		&:hover, &:focus {
+			color: darken($white, 10%);
+		}
 	}
 }
 
