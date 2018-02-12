@@ -31,6 +31,12 @@
             </a>
           <?php endif ?>
         </li>
+        <!-- <li>
+          <a href="add-author.php" title="add autor">Add Author</a>
+        </li> -->
+        <li>
+          <a href="publishers.php" title="add autor">Publishers</a>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
