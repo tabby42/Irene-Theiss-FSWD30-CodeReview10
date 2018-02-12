@@ -170,44 +170,49 @@ p.desc {
   margin: 0 auto;
   margin-bottom: 20px; }
 
-#login-modal, #register-modal {
+#login-modal, #register-modal, #author-modal {
   background: rgba(28, 31, 35, 0.84);
   overflow-x: hidden;
   overflow-y: auto; }
-  #login-modal .modal-content, #register-modal .modal-content {
+  #login-modal .modal-content, #register-modal .modal-content, #author-modal .modal-content {
     border-radius: 0;
     border: 4px solid #fff;
     background-color: #1C1F23;
     color: #fff;
     padding: 20px 35px; }
-    #login-modal .modal-content .modal-title, #register-modal .modal-content .modal-title {
+    #login-modal .modal-content .modal-title, #register-modal .modal-content .modal-title, #author-modal .modal-content .modal-title {
       letter-spacing: 1px;
       text-align: center;
       font-size: 24px; }
     #login-modal .modal-content .modal-header,
     #login-modal .modal-content .modal-footer, #register-modal .modal-content .modal-header,
-    #register-modal .modal-content .modal-footer {
+    #register-modal .modal-content .modal-footer, #author-modal .modal-content .modal-header,
+    #author-modal .modal-content .modal-footer {
       border-width: 0; }
       #login-modal .modal-content .modal-header .close,
       #login-modal .modal-content .modal-footer .close, #register-modal .modal-content .modal-header .close,
-      #register-modal .modal-content .modal-footer .close {
+      #register-modal .modal-content .modal-footer .close, #author-modal .modal-content .modal-header .close,
+      #author-modal .modal-content .modal-footer .close {
         color: #fff;
         text-shadow: none;
         opacity: 1; }
       #login-modal .modal-content .modal-header a,
       #login-modal .modal-content .modal-footer a, #register-modal .modal-content .modal-header a,
-      #register-modal .modal-content .modal-footer a {
+      #register-modal .modal-content .modal-footer a, #author-modal .modal-content .modal-header a,
+      #author-modal .modal-content .modal-footer a {
         color: #83715C; }
         #login-modal .modal-content .modal-header a:hover, #login-modal .modal-content .modal-header a:focus,
         #login-modal .modal-content .modal-footer a:hover,
         #login-modal .modal-content .modal-footer a:focus, #register-modal .modal-content .modal-header a:hover, #register-modal .modal-content .modal-header a:focus,
         #register-modal .modal-content .modal-footer a:hover,
-        #register-modal .modal-content .modal-footer a:focus {
+        #register-modal .modal-content .modal-footer a:focus, #author-modal .modal-content .modal-header a:hover, #author-modal .modal-content .modal-header a:focus,
+        #author-modal .modal-content .modal-footer a:hover,
+        #author-modal .modal-content .modal-footer a:focus {
           text-decoration: underline;
           color: #83715C; }
-    #login-modal .modal-content .modal-footer, #register-modal .modal-content .modal-footer {
+    #login-modal .modal-content .modal-footer, #register-modal .modal-content .modal-footer, #author-modal .modal-content .modal-footer {
       padding: 30px 0 15px 0; }
-    #login-modal .modal-content .btn, #register-modal .modal-content .btn {
+    #login-modal .modal-content .btn, #register-modal .modal-content .btn, #author-modal .modal-content .btn {
       border-radius: 0;
       border: 0;
       width: 48%;
@@ -220,36 +225,36 @@ p.desc {
       outline: 0;
       -webkit-box-shadow: none;
       box-shadow: none; }
-      #login-modal .modal-content .btn.btn-primary, #register-modal .modal-content .btn.btn-primary {
+      #login-modal .modal-content .btn.btn-primary, #register-modal .modal-content .btn.btn-primary, #author-modal .modal-content .btn.btn-primary {
         background-color: #83715C; }
-        #login-modal .modal-content .btn.btn-primary:hover, #login-modal .modal-content .btn.btn-primary:focus, #register-modal .modal-content .btn.btn-primary:hover, #register-modal .modal-content .btn.btn-primary:focus {
+        #login-modal .modal-content .btn.btn-primary:hover, #login-modal .modal-content .btn.btn-primary:focus, #register-modal .modal-content .btn.btn-primary:hover, #register-modal .modal-content .btn.btn-primary:focus, #author-modal .modal-content .btn.btn-primary:hover, #author-modal .modal-content .btn.btn-primary:focus {
           background-color: #473d32; }
-      #login-modal .modal-content .btn.btn-default, #register-modal .modal-content .btn.btn-default {
+      #login-modal .modal-content .btn.btn-default, #register-modal .modal-content .btn.btn-default, #author-modal .modal-content .btn.btn-default {
         background-color: #473d32; }
-        #login-modal .modal-content .btn.btn-default:hover, #login-modal .modal-content .btn.btn-default:focus, #register-modal .modal-content .btn.btn-default:hover, #register-modal .modal-content .btn.btn-default:focus {
+        #login-modal .modal-content .btn.btn-default:hover, #login-modal .modal-content .btn.btn-default:focus, #register-modal .modal-content .btn.btn-default:hover, #register-modal .modal-content .btn.btn-default:focus, #author-modal .modal-content .btn.btn-default:hover, #author-modal .modal-content .btn.btn-default:focus {
           background-color: #83715C; }
-      #login-modal .modal-content .btn.btn-sm, #register-modal .modal-content .btn.btn-sm {
+      #login-modal .modal-content .btn.btn-sm, #register-modal .modal-content .btn.btn-sm, #author-modal .modal-content .btn.btn-sm {
         width: 100%;
         clear: both;
         margin-left: 0;
         margin-top: 25px; }
-  #login-modal .form-control, #login-modal select, #register-modal .form-control, #register-modal select {
+  #login-modal .form-control, #login-modal select, #register-modal .form-control, #register-modal select, #author-modal .form-control, #author-modal select {
     border-radius: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
     background-color: transparent;
     color: #fff;
     border-color: #83715C; }
-  #login-modal .has-error .form-control, #login-modal .has-error .form-control-feedback, #register-modal .has-error .form-control, #register-modal .has-error .form-control-feedback {
+  #login-modal .has-error .form-control, #login-modal .has-error .form-control-feedback, #register-modal .has-error .form-control, #register-modal .has-error .form-control-feedback, #author-modal .has-error .form-control, #author-modal .has-error .form-control-feedback {
     border-color: #C73835; }
-  #login-modal .has-success .form-control, #login-modal .has-success .form-control-feedback, #register-modal .has-success .form-control, #register-modal .has-success .form-control-feedback {
+  #login-modal .has-success .form-control, #login-modal .has-success .form-control-feedback, #register-modal .has-success .form-control, #register-modal .has-success .form-control-feedback, #author-modal .has-success .form-control, #author-modal .has-success .form-control-feedback {
     border-color: #38C13B; }
-  #login-modal select, #register-modal select {
+  #login-modal select, #register-modal select, #author-modal select {
     -webkit-appearance: none; }
-  #login-modal label, #register-modal label {
+  #login-modal label, #register-modal label, #author-modal label {
     font-weight: 400;
     text-transform: uppercase; }
-  #login-modal .bg-danger, #register-modal .bg-danger {
+  #login-modal .bg-danger, #register-modal .bg-danger, #author-modal .bg-danger {
     padding: 5px;
     background-color: transparent;
     border: 1px solid #C73835; }
