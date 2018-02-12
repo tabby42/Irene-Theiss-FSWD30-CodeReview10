@@ -168,6 +168,14 @@ class Media {
 		echo $content;
 	}
 
+	function createAuthor() {
+		$connection = openConnection();
+		 //statement
+		 //$sql = "INSERT INTO author (firstname, lastname) VALUES (?, ?, ?, ?)";
+	}
+
+	
+
 }
 
 ?>
