@@ -127,4 +127,14 @@ ORDER BY title;
 
 -- SELECT * FROM getRentedMedia WHERE id= 1;
 
+CREATE VIEW getPublishers AS
+SELECT publisher.id, pub_name, size, address, CONCAT(zipcode, ' ', city_name, ', ', country_code) AS address2,
+				title, CONCAT(firstname, ' ', lastname) AS author, mediatype
+FROM publisher
+JOIN city ON publisher.fk_city_id = city.id
+JOIN country ON city.fk_country_id = country.id
+JOIN media ON publisher.id = media.fk_publisher_id
+JOIN author ON media.fk_author_id = author.id;
+
+SELECT * FROM getPublishers GROUP BY id;
 
